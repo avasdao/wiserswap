@@ -11,7 +11,7 @@ const props = defineProps({
 })
 
 /* Set API endpoint. */
-const API_ENDPOINT = 'https://nexa.exchange/_ticker'
+const API_ENDPOINT = 'https://telr.exchange/v1/ticker/quote/NEXA'
 
 const isShowingMenu = ref(false)
 
@@ -228,15 +228,15 @@ onMounted(() => {
 
                         <p class="sm:hidden block flex-1 text-center text-sm font-medium text-white lg:flex-none tracking-wider">
                             Go PRO!
-                            <NuxtLink to="https://nexa.exchange" target="_blank" class="text-sky-400 font-bold hover:text-sky-500">NEXA.exchange</NuxtLink>
+                            <NuxtLink to="https://telr.exchange" target="_blank" class="text-sky-400 font-bold hover:text-sky-500">TΞLR.exchange</NuxtLink>
                         </p>
                         <p class="hidden sm:block flex-1 text-center text-sm font-medium text-white lg:flex-none tracking-wider">
                             Access PRO Trader tools on
-                            <NuxtLink to="https://nexa.exchange" target="_blank" class="text-sky-400 font-bold hover:text-sky-500">NEXA.exchange</NuxtLink>
+                            <NuxtLink to="https://telr.exchange" target="_blank" class="text-sky-400 font-bold hover:text-sky-500">TΞLR.exchange</NuxtLink>
                         </p>
 
                         <div class="lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                            <NuxtLink to="https://nexa.exchange/markets" target="_blank">
+                            <NuxtLink to="https://telr.exchange/markets" target="_blank">
                                 <h2 class="flex flex-row items-baseline text-xs text-amber-500 hover:text-amber-400 font-medium group">
                                     mNEXA/USD
                                     <span class="ml-2 text-xl text-amber-300 group-hover:text-amber-200">
@@ -247,14 +247,14 @@ onMounted(() => {
 
                             <span class="hidden lg:flex h-6 w-px bg-gray-600" aria-hidden="true"></span>
 
-                            <NuxtLink to="https://nexa.exchange/markets" target="_blank" class="hidden lg:flex">
+                            <NuxtLink to="https://telr.exchange/markets" target="_blank" class="hidden lg:flex">
                                 <div class="flex justify-end">
                                     <span class="text-yellow-400 font-medium text-sm sm:text-base">
                                         <span class="">
                                             {{priceChg24h}}
                                         </span>
 
-                                        <svg v-if="ticker?.quote.USD.pctChg24h > 0" class="inline w-4 h-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <svg v-if="ticker?.quote?.USD?.pctChg24h > 0" class="inline w-4 h-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
                                         </svg>
                                         <svg v-else class="inline w-4 h-auto text-red-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

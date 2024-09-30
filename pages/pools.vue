@@ -222,7 +222,7 @@ onMounted(() => {
                                     Farm
                                 </button>
 
-                                <NuxtLink :to="'https://nexa.exchange/token/' + token.id" target="_blank" class="w-full px-5 py-2 bg-amber-500 text-amber-50 text-xl font-medium rounded-lg shadow hover:bg-amber-400">
+                                <NuxtLink :to="'https://telr.exchange/token/' + token.id" target="_blank" class="w-full px-5 py-2 bg-amber-500 text-amber-50 text-xl font-medium rounded-lg shadow hover:bg-amber-400">
                                     Details
                                 </NuxtLink>
                             </td>

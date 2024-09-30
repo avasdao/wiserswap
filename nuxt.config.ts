@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     // FIXME
     runtimeConfig: {
         public: {
-            API_ENDPOINT: 'https://nexa.exchange/v1',
+            API_ENDPOINT: 'https://telr.exchange/v1',
             API_ENDPOINT_RAW: process.env.API_ENDPOINT,
             API_ENDPOINT_NUXT: process.env.NUXT_ENV_API_ENDPOINT,
         },

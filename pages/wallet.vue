@@ -285,7 +285,7 @@ onMounted(() => {
             </div>
         </div>
 
-        <section class="px-5 py-2 col-span-3 flex flex-col gap-3">
+        <section class="hidden px-5 py-2 col-span-3 flex flex-col gap-3">
 
             <!-- Invoice summary -->
             <div class="lg:col-start-3 lg:row-end-1">

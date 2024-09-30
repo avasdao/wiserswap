@@ -17,7 +17,7 @@ const assetid = ref(null)
 /* Set (route) path. */
 assetid.value = route?.params.assetid
 
-const ENDPOINT = 'https://nexa.exchange/v1/ticker/quote'
+const ENDPOINT = 'https://telr.exchange/v1/ticker/quote'
 const MAX_HISTORY = 20
 const MAX_HISTORY_SEARCH = 100
 const DEV_POOL_ADDR = 'nexa:nprqq9xh03064ut44k5pp3zkvr4vh422ez7ukfqqzjefztzvcc03hr97t3m7h40wagnyzezlzqpzcqg5gh6mn4qa6u33g8mjr3e8w9wxjrldhw7kqqqq47nsfsmf'
