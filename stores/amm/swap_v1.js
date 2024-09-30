@@ -446,11 +446,11 @@ export default async (
         tokens: allTokens,
         receivers,
     })
-    console.log('Build UTXO (response)', response.raw)
+    console.log('Build UTXO (response)', response.hex)
 
     /* Validate transaction bytecode. */
-    if (response.raw) {
-        response = await broadcast(response.raw)
+    if (response.hex) {
+        response = await broadcast(response.hex)
         console.log('BROADCAST (response)', response)
     } else {
         response = 'Transaction build ERROR!'
