@@ -279,7 +279,6 @@ const reverseAssetPair = () => {
 const swap = async () => {
     /* Initialize locals. */
     let displayAction
-    let response
     let txResult
 
     if (action === 'BUY') {
@@ -303,57 +302,47 @@ const swap = async () => {
         /* Set flag. */
         isSwapping.value = true
 
-        response = await Amm
+        txResult = await Amm
             .swap(baseTokenidHex.value, quoteTokenidHex.value, quoteQuantity.value)
             .catch(err => {
                 console.error('err', err)
 
                 error.value = err.message
             })
-        console.log('SWAP RESPONSE', response)
+        console.log('SWAP RESPONSE', txResult)
         console.log('ERROR', typeof error.value, error.value)
 
         /* Set flag. */
         isSwapping.value = false
 
-        if (!response && error.value) {
+        if (!txResult && error.value) {
             console.log('FOUND A RESPONSE ERROR')
             return
         }
 
-        try {
-            txResult = JSON.parse(response)
-            console.log('TX RESULT', txResult)
+        if (txResult.error?.message) {
+            // alert(txResult.error.message)
+            error.value = txResult.error.message
+        } else {
+            // alert(txResult.result)
+            txidem.value = txResult.result
 
-            if (txResult.error?.message) {
-                // alert(txResult.error.message)
-                error.value = txResult.error.message
-            } else {
-                // alert(txResult.result)
-                txidem.value = txResult.result
+            /* Reset all. */
+            activeInput.value = null
+            error.value = null
+            baseQuantity.value = null
+            quoteQuantity.value = null
 
-                /* Reset all. */
-                activeInput.value = null
-                error.value = null
-                baseQuantity.value = null
-                quoteQuantity.value = null
-
-                // BURST CONFETTI
-                jsConfetti.addConfetti({
-                    // emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
-                    // confettiColors: [
-                    //     '#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7',
-                    // ],
-                    // confettiRadius: 6,
-                    confettiNumber: 300,
-                })
-            }
-        } catch (err) {
-            console.error(err)
-
-            error.value = response
+            // BURST CONFETTI
+            jsConfetti.addConfetti({
+                // emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+                // confettiColors: [
+                //     '#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7',
+                // ],
+                // confettiRadius: 6,
+                confettiNumber: 300,
+            })
         }
-
     }
 }
 
