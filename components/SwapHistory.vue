@@ -6,7 +6,7 @@ import numeral from 'numeral'
 import {
     getAddressTokenHistory,
     getTransaction,
-} from '@nexajs/rostrum'
+} from '@nexajs/provider'
 
 /* Initialize route. */
 const route = useRoute()

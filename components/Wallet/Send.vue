@@ -2,11 +2,12 @@
 import numeral from 'numeral'
 import moment from 'moment'
 import QrScanner from 'qr-scanner'
+
 import {
     getAddressBalance,
     getAddressFirstUse,
     getTransaction,
-} from '@nexajs/rostrum'
+} from '@nexajs/provider'
 
 /* Initialize stores. */
 import { useSystemStore } from '@/stores/system'

@@ -5,7 +5,7 @@ import { getSender } from '@nexajs/address'
 import {
     getAddressHistory,
     getTransaction,
-} from '@nexajs/rostrum'
+} from '@nexajs/provider'
 
 /* Initialize stores. */
 import { useSystemStore } from '@/stores/system'
