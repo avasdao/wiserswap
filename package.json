@@ -1,6 +1,6 @@
 {
   "name": "wiserswap",
-  "version": "24.10.2",
+  "version": "24.11.17",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
@@ -10,6 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@kevinmarrec/nuxt-pwa": "0.17.0",
+    "@nuxtjs/i18n": "9.0.0",
+    "@nuxtjs/tailwindcss": "6.4.1",
     "@pinia/nuxt": "0.5.4",
     "apexcharts": "3.44.0",
     "chart.js": "4.4.0",
@@ -22,13 +25,12 @@
     "pouchdb": "9.0.0",
     "qr-scanner": "1.4.2",
     "qrcode": "1.5.3",
+    "typescript": "5.6.3",
     "uuid": "10.0.0",
     "vue-chartjs": "5.2.0",
     "vue3-apexcharts": "1.4.4"
   },
-  "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "0.17.0",
-    "@nuxtjs/i18n": "8.3.3",
-    "@nuxtjs/tailwindcss": "6.4.1"
+  "resolutions": {
+    "string-width": "4.2.3"
   }
 }
