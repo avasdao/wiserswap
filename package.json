@@ -1,6 +1,6 @@
 {
   "name": "wiserswap",
-  "version": "24.11.17",
+  "version": "25.2.10",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
