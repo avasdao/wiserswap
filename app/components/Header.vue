@@ -219,15 +219,15 @@ const pctChg24hRaw = computed(() => {
 
                         <p class="sm:hidden block flex-1 text-center text-sm font-medium text-white lg:flex-none tracking-wider">
                             Go PRO!
-                            <NuxtLink to="pro" target="_blank" class="text-sky-400 font-bold hover:text-sky-500">NEXA.exchange</NuxtLink>
+                            <NuxtLink to="pro" class="text-sky-400 font-bold hover:text-sky-500">NEXA.exchange</NuxtLink>
                         </p>
                         <p class="hidden sm:block flex-1 text-center text-sm font-medium text-white lg:flex-none tracking-wider">
                             Access PRO Trader tools on
-                            <NuxtLink to="pro" target="_blank" class="text-sky-400 font-bold hover:text-sky-500">NEXA.exchange</NuxtLink>
+                            <NuxtLink to="pro" class="text-sky-400 font-bold hover:text-sky-500">NEXA.exchange</NuxtLink>
                         </p>
 
                         <div class="lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                            <NuxtLink to="markets" target="_blank">
+                            <NuxtLink to="markets">
                                 <h2 class="flex flex-row items-baseline text-xs text-amber-500 hover:text-amber-400 font-medium group">
                                     mNEXA/USD
                                     <span class="ml-2 text-xl text-amber-300 group-hover:text-amber-200">
@@ -238,7 +238,7 @@ const pctChg24hRaw = computed(() => {
 
                             <span class="hidden lg:flex h-6 w-px bg-gray-600" aria-hidden="true"></span>
 
-                            <NuxtLink to="markets" target="_blank" class="hidden lg:flex">
+                            <NuxtLink to="markets" class="hidden lg:flex">
                                 <div class="flex justify-end">
                                     <span class="text-yellow-400 font-medium text-sm sm:text-base">
                                         <span class="">

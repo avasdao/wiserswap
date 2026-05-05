@@ -13,9 +13,6 @@ export default defineNuxtConfig({
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             ],
-            script: [
-                { src: '/js/matomo.js' },
-            ],
         },
     },
 
@@ -79,5 +76,5 @@ export default defineNuxtConfig({
     },
 
     /* Set compatibility date. */
-    compatibilityDate: '2024-09-10',
+    compatibilityDate: '2025-05-05',
 })
