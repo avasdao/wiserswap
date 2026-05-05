@@ -12,45 +12,35 @@ const props = defineProps({
     },
 })
 
-/* Set API endpoint. */
-const API_ENDPOINT = 'https://wiserswap.com/v1/ticker/quote/NEXA'
+/* Initialize stores. */
+import { useSystemStore } from '@/stores/system'
+const System = useSystemStore()
 
 const isShowingMenu = ref(false)
 
-const tickerHandler = ref(null)
-const ticker = ref(null)
+const displayQuote = computed(() => {
+    const price = System.nexaTicker?.price
+    if (!price) return 'n/a'
 
-let displayQuote = ref(null)
-let priceChg24h = ref(null)
-let vol24h = ref(null)
+    return formatNumber(price * 1000000, '$0,0.00')
+})
 
-const updateTicker = async () => {
-    ticker.value = await $fetch(API_ENDPOINT)
-        .catch(err => console.error(err))
-    // console.info('Latest ticker:', ticker.value)
+const priceChg24h = computed(() => {
+    const pct = System.nexaTicker?.pctChg24h
+    if (pct === null || pct === undefined) return 'n/a'
 
-    const price = (ticker.value?.quote.USD.price * 1000000) || 'n/a'
-    // console.log('PRICE', price)
+    return formatNumber(pct / 100.0, '0.0%')
+})
 
-    const pctChg24h = formatNumber(ticker.value?.quote.USD.pctChg24h / 100.0, '0.0%') || 'n/a'
-    // console.log('PCT CHANGE 24H', pctChg24h)
+const vol24h = computed(() => {
+    const vol = System.nexaTicker?.vol24
+    if (vol === null || vol === undefined) return 'n/a'
 
-    const vol24 = formatNumber(ticker.value?.quote.USD.vol24, '0,0.0a') || 'n/a'
-    // console.log('VOLUME 24H', vol24)
+    return formatNumber(vol, '0,0.0a')
+})
 
-    displayQuote.value = formatNumber(price, '$0,0.00')
-
-    priceChg24h.value = pctChg24h
-
-    vol24h.value = vol24
-}
-
-// this.tickerHandler = setInterval(() => {
-//     this.updateTicker()
-// }, 30000)
-
-onMounted(() => {
-    updateTicker()
+const pctChg24hRaw = computed(() => {
+    return System.nexaTicker?.pctChg24h ?? 0
 })
 
 // onBeforeUnmount(() => {
@@ -255,7 +245,7 @@ onMounted(() => {
                                             {{priceChg24h}}
                                         </span>
 
-                                        <svg v-if="ticker?.quote?.USD?.pctChg24h > 0" class="inline w-4 h-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <svg v-if="pctChg24hRaw > 0" class="inline w-4 h-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
                                         </svg>
                                         <svg v-else class="inline w-4 h-auto text-red-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

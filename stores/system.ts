@@ -91,6 +91,26 @@ export const useSystemStore = defineStore('system', {
 
             return this._entropy
         },
+
+        /**
+         * NEXA Ticker (USD)
+         *
+         * Returns the USD quote object from the NEXA ticker,
+         * e.g. { price, pctChg24h, vol24, marketCap }.
+         */
+        nexaTicker() {
+            return this._tickers?.NEXA?.quote?.USD || null
+        },
+
+        /**
+         * USD Price
+         *
+         * Convenience getter used by wallet pages for fiat calculations.
+         * Returns the raw NEXA price in USD (e.g. 4.91e-7).
+         */
+        usd() {
+            return this._tickers?.NEXA?.quote?.USD?.price || 0
+        },
     },
 
     actions: {
@@ -136,10 +156,10 @@ export const useSystemStore = defineStore('system', {
                 this._tickers.NEXA = {}
             }
 
-            this._tickers.AVAS = await $fetch('https://wiserswap.com/v1/ticker/quote/57f46c1766dc0087b207acde1b3372e9f90b18c7e67242657344dcd2af660000')
+            this._tickers.AVAS = await $fetch('https://wiserswap.com/v1/ticker/57f46c1766dc0087b207acde1b3372e9f90b18c7e67242657344dcd2af660000')
                 .catch(err => console.error(err))
 
-            this._tickers.NEXA = await $fetch('https://wiserswap.com/v1/ticker/quote/NEXA')
+            this._tickers.NEXA = await $fetch('https://wiserswap.com/v1/ticker/NEXA')
                 .catch(err => console.error(err))
         },
 
