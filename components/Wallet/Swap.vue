@@ -1,6 +1,6 @@
-<script setup>
-import numeral from 'numeral'
+<!-- components/Wallet/Swap.vue -->
 
+<script setup>
 /* Initialize stores. */
 import { useSystemStore } from '@/stores/system'
 const System = useSystemStore()

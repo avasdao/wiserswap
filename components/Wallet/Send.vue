@@ -1,6 +1,9 @@
+<!-- components/Wallet/Send.vue -->
+
 <script setup>
-import numeral from 'numeral'
-import moment from 'moment'
+const { formatNumber } = useFormats()
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import QrScanner from 'qr-scanner'
 import {
     getAddressBalance,
@@ -8,12 +11,14 @@ import {
     getTransaction,
 } from '@nexajs/provider'
 
+/* Extend dayjs with relativeTime plugin. */
+dayjs.extend(relativeTime)
+
 /* Initialize stores. */
 import { useSystemStore } from '@/stores/system'
 import { useWalletStore } from '@/stores/wallet'
 const System = useSystemStore()
 const Wallet = useWalletStore()
-
 
 const amount = ref(null)
 const receiver = ref(null)
@@ -32,7 +37,6 @@ const scanner = ref(null)
 const cameraError = ref(null)
 
 const isShowingVideoPreview = ref('hidden')
-
 
 watch(() => amount.value, (_amount) => {
     /* Clear errors. */
@@ -373,8 +377,8 @@ onMounted(() => {
                     <h3>
                         Block Time: {{firstTx.blocktime}}
                         <span class="block text-rose-500 font-bold">
-                            {{moment.unix(firstTx.blocktime).format('llll')}}
-                            <span class="italic text-rose-400">{{moment.unix(firstTx.blocktime).fromNow()}}</span>
+                            {{dayjs.unix(firstTx.blocktime).format('llll')}}
+                            <span class="italic text-rose-400">{{dayjs.unix(firstTx.blocktime).fromNow()}}</span>
                         </span>
                     </h3>
 

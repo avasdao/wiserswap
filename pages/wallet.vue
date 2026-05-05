@@ -1,11 +1,13 @@
-<script setup>
-/* Import modules. */
-import numeral from 'numeral'
+<!-- pages/wallet.vue -->
 
+<script setup>
 /* Define properties. */
 const props = defineProps({
     isFullScreen: Boolean,
 })
+
+/* Initialize formats. */
+const { formatNumber } = useFormats()
 
 /* Initialize stores. */
 import { useProfileStore } from '@/stores/profile'
@@ -45,7 +47,7 @@ const displayBalance = computed(() => {
         bigIntValue = decimalValue
     }
 
-    return numeral(parseFloat(bigIntValue) / 1e4).format('0,0[.]00[0000]')
+    return formatNumber(parseFloat(bigIntValue) / 1e4, '0,0[.]00[0000]')
 
     /* Initialize locals. */
     // let amount
@@ -64,7 +66,7 @@ const displayBalance = computed(() => {
 //     }
 
 //     /* Return (formatted) balance. */
-//     return numeral(balance).format('0,0[.]00[0000]') + '*'
+//     return formatNumber(balance, '0,0[.]00[0000]') + '*'
 })
 
 const displayBalanceUsd = computed(() => {
@@ -80,7 +82,7 @@ const displayBalanceUsd = computed(() => {
     balanceUsd = Wallet.asset.fiat.USD || 0.00
 
     /* Return formatted value. */
-    return numeral(balanceUsd).format('$0,0.00[0000]')
+    return formatNumber(balanceUsd, '$0,0.00[0000]')
 })
 
 const tokensBalanceUsd = computed(() => {
@@ -113,7 +115,7 @@ const tokensBalanceUsd = computed(() => {
     })
 
     /* Return (fiat) value. */
-    return '~' + numeral(totalUsd).format('$0,0.00')
+    return '~' + formatNumber(totalUsd, '$0,0.00')
 })
 
 /**

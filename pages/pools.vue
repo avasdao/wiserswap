@@ -1,6 +1,8 @@
+<!-- pages/pools.vue -->
+
 <script setup lang="ts">
-/* Import modules. */
-import numeral from 'numeral'
+/* Initialize formats. */
+const { formatNumber } = useFormats()
 
 useHead({
     title: `Pools — WiserSwap`,
@@ -29,21 +31,21 @@ const init = async () => {
 const totalTradeAmount = (_token) => {
     if (_token.nextFoundation) {
         if (_token.nextFoundation['NEX']) {
-            return '$' + numeral(_token.nextFoundation['NEX']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.nextFoundation['NEX'], '0,0.00[000000]')
         }
 
         if (_token.nextFoundation['USD']) {
-            return '$' + numeral(_token.nextFoundation['USD']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.nextFoundation['USD'], '0,0.00[000000]')
         }
     }
 
     if (_token.foundation) {
         if (_token.foundation['NEX']) {
-            return '$' + numeral(_token.foundation['NEX']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.foundation['NEX'], '0,0.00[000000]')
         }
 
         if (_token.foundation['USD']) {
-            return '$' + numeral(_token.foundation['USD']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.foundation['USD'], '0,0.00[000000]')
         }
     }
 
@@ -59,7 +61,7 @@ const displayFloor = (_token) => {
     } else {
         rate = (_token.floor / 100.0) / SATOSHIS_PER_NEXA
 
-        return `${numeral(1.00).format('0,0.00')} $${_token.ticker} per ${numeral(rate).format('0,0.00[00]')} $NEXA`
+        return `${formatNumber(1.00, '0,0.00')} $${_token.ticker} per ${formatNumber(rate, '0,0.00[00]')} $NEXA`
     }
 }
 

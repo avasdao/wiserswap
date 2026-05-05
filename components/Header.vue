@@ -1,6 +1,8 @@
+<!-- components/Header.vue -->
+
 <script setup lang="ts">
-/* Import modules. */
-import numeral from 'numeral'
+/* Initialize formats. */
+const { formatNumber } = useFormats()
 
 /* Define properties. */
 // https://vuejs.org/guide/components/props.html#props-declaration
@@ -30,19 +32,18 @@ const updateTicker = async () => {
     const price = (ticker.value?.quote.USD.price * 1000000) || 'n/a'
     // console.log('PRICE', price)
 
-    const pctChg24h = numeral(ticker.value?.quote.USD.pctChg24h / 100.0).format('0.0%') || 'n/a'
+    const pctChg24h = formatNumber(ticker.value?.quote.USD.pctChg24h / 100.0, '0.0%') || 'n/a'
     // console.log('PCT CHANGE 24H', pctChg24h)
 
-    const vol24 = numeral(ticker.value?.quote.USD.vol24).format('0,0.0a') || 'n/a'
+    const vol24 = formatNumber(ticker.value?.quote.USD.vol24, '0,0.0a') || 'n/a'
     // console.log('VOLUME 24H', vol24)
 
-    displayQuote.value = numeral(price).format('$0,0.00')
+    displayQuote.value = formatNumber(price, '$0,0.00')
 
     priceChg24h.value = pctChg24h
 
     vol24h.value = vol24
 }
-
 
 // this.tickerHandler = setInterval(() => {
 //     this.updateTicker()
@@ -294,7 +295,6 @@ onMounted(() => {
                                         <div class="flex h-full justify-center space-x-8">
                                             <div class="flex">
                                                 <div class="relative flex">
-                                                    <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
                                                     <NuxtLink to="/swap"
                                                         type="button"
                                                         class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-lg font-medium transition-colors duration-200 ease-out"
@@ -307,7 +307,6 @@ onMounted(() => {
 
                                             <div class="flex">
                                                 <div class="relative flex">
-                                                    <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
                                                     <NuxtLink to="/tokens"
                                                         type="button"
                                                         class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-lg font-medium transition-colors duration-200 ease-out"
@@ -339,7 +338,6 @@ onMounted(() => {
 
                                 <!-- Mobile menu and search (lg-) -->
                                 <div class="flex flex-1 items-center lg:hidden">
-                                    <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
                                     <button @click="isShowingMenu = true" type="button" class="-ml-2 rounded-md bg-white p-2 text-gray-400">
                                         <span class="sr-only">Open menu</span>
                                         <svg class="w-8 h-auto" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

@@ -29,12 +29,12 @@ importers:
       chart.js:
         specifier: 4.4.0
         version: 4.4.0
+      dayjs:
+        specifier: ^1.11.20
+        version: 1.11.20
       js-confetti:
         specifier: 0.12.0
         version: 0.12.0
-      moment:
-        specifier: 2.29.4
-        version: 2.29.4
       nexajs:
         specifier: 24.10.4
         version: 24.10.4
@@ -2913,6 +2913,9 @@ packages:
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
+
+  dayjs@1.11.20:
+    resolution: {integrity: sha512-YbwwqR/uYpeoP4pu043q+LTDLFBLApUP6VxRihdfNTqu4ubqMlGDLd6ErXhEgsyvY0K6nCs7nggYumAN+9uEuQ==}
 
   db0@0.3.4:
     resolution: {integrity: sha512-RiXXi4WaNzPTHEOu8UPQKMooIbqOEyqA1t7Z6MsdxSCeb8iUC9ko3LcmsLmeUt2SM5bctfArZKkRQggKZz7JNw==}
@@ -8713,6 +8716,8 @@ snapshots:
       css-tree: 2.2.1
 
   csstype@3.2.3: {}
+
+  dayjs@1.11.20: {}
 
   db0@0.3.4: {}
 

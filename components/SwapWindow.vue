@@ -1,12 +1,16 @@
+<!-- components/SwapWindow.vue -->
+
 <script setup lang="ts">
 import JSConfetti from 'js-confetti'
-import numeral from 'numeral'
 
 import {
     encodeAddress,
     listUnspent,
 } from '@nexajs/address'
 import { hexToBin } from '@nexajs/utils'
+
+/* Initialize formats. */
+const { formatNumber } = useFormats()
 
 /* Initialize stores. */
 import { useAmmStore } from '@/stores/amm'
@@ -298,7 +302,7 @@ const swap = async () => {
     }
 
     /* Confirm on UI. */
-    if (confirm(`WiserSwap is currently in BETA! Slippage is very HIGH due to the currently very low liquidity. Are you sure you want to ${displayAction} ${numeral(quoteQuantity.value).format('0,0.00[00]')} ${quoteName.value} for ${numeral(baseQuantity.value).format('0,0.00[00]')} ${baseName.value}?`)) {
+    if (confirm(`WiserSwap is currently in BETA! Slippage is very HIGH due to the currently very low liquidity. Are you sure you want to ${displayAction} ${formatNumber(quoteQuantity.value, '0,0.00[00]')} ${quoteName.value} for ${formatNumber(baseQuantity.value, '0,0.00[00]')} ${baseName.value}?`)) {
         /* Set flag. */
         isSwapping.value = true
 

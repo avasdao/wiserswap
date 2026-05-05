@@ -1,6 +1,6 @@
-<script setup>
-import moment from 'moment'
+<!-- components/Settings.vue -->
 
+<script setup>
 /* Initialize stores. */
 import { useProfileStore } from '@/stores/profile'
 import { useSystemStore } from '@/stores/system'
@@ -14,7 +14,6 @@ const isShowingMnemonic = ref(false)
 
 const currency = ref(null)
 
-
 const wordList = computed(() => {
     if (!Wallet.wallet.mnemonic) {
         return null
@@ -24,7 +23,6 @@ const wordList = computed(() => {
 
     return list
 })
-
 
 const setNEXA = () => {
     if (currency.value !== 'NEXA') {

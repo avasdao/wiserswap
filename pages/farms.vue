@@ -1,7 +1,6 @@
-<script setup lang="ts">
-/* Import modules. */
-import numeral from 'numeral'
+<!-- pages/farms.vue -->
 
+<script setup lang="ts">
 useHead({
     title: `Farms — WiserSwap`,
     meta: [

@@ -1,5 +1,7 @@
+// server/api/session.post.ts
+
 /* Import modules. */
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { sha256 } from '@nexajs/crypto'
 import PouchDB from 'pouchdb'
 import { v4 as uuidv4 } from 'uuid'
@@ -45,9 +47,9 @@ const createSession = async (_source, _headers) => {
         ...logDetails,
         challenge,
         isActive: true,
-        createdAt: moment().unix(),
-        expiresAt: moment().add(1, 'days').unix(),
-        killedAt: moment().add(7, 'days').unix(),
+        createdAt: dayjs().unix(),
+        expiresAt: dayjs().add(1, 'days').unix(),
+        killedAt: dayjs().add(7, 'days').unix(),
     }
 
     /* Return session. */
@@ -58,7 +60,6 @@ const manageSession = async () => {
     const monitor = setInterval(() => {
         console.log('monitoring sessions...')
     }, 60000)
-
 
 }
 
@@ -94,8 +95,8 @@ export default defineEventHandler(async (event) => {
         /* Update timestamp. */
         session = {
             ...session,
-            expiresAt: moment().add(1, 'days').unix(),
-            updatedAt: moment().unix(),
+            expiresAt: dayjs().add(1, 'days').unix(),
+            updatedAt: dayjs().unix(),
         }
 
         /* Save (updated) session. */

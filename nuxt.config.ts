@@ -66,6 +66,11 @@ export default defineNuxtConfig({
         '@kevinmarrec/nuxt-pwa',
     ],
 
+    /* Internationalization Settings */
+    i18n: {
+        defaultLocale: 'en',
+    },
+
     /* Route Rules */
     routeRules: {
         /* Disable server-side rendering for entire site. */

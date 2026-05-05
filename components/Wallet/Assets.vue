@@ -1,6 +1,8 @@
+<!-- components/Wallet/Assets.vue -->
+
 <script setup>
-/* Import modules. */
-import numeral from 'numeral'
+/* Initialize formats. */
+const { formatNumber } = useFormats()
 
 /* Initialize stores. */
 import { useWalletStore } from '@/stores/wallet'
@@ -68,7 +70,7 @@ const coinAmount = computed(() => {
         (totalSatoshis, coin) => (totalSatoshis + coin.satoshis), BigInt(0)
     )
 
-    return numeral(parseFloat(total) / 100.0).format('0,0.00[00000000]')
+    return formatNumber(parseFloat(total) / 100.0, '0,0.00[00000000]')
 })
 
 const coinAmountUsd = computed(() => {
@@ -94,10 +96,10 @@ const coinAmountUsd = computed(() => {
     /* Handle UI (value) formatting. */
     if (mexUsd >= 10.0) {
         /* Return formatted value. */
-        return numeral(mexUsd).format('$0,0.00')
+        return formatNumber(mexUsd, '$0,0.00')
     } else {
         /* Return formatted value. */
-        return numeral(mexUsd).format('$0,0.00[00]')
+        return formatNumber(mexUsd, '$0,0.00[00]')
     }
 })
 
@@ -136,7 +138,7 @@ const displayDecimalAmount = (_token) => {
     }
 
     /* Return formatted value. */
-    return numeral(parseFloat(bigIntValue) / 1e4).format('0,0[.]00[0000]')
+    return formatNumber(parseFloat(bigIntValue) / 1e4, '0,0[.]00[0000]')
 }
 
 const displayDecimalAmountUsd = (_token) => {
@@ -149,10 +151,10 @@ const displayDecimalAmountUsd = (_token) => {
     /* Handle amount. */
     if (amount >= 10.0) {
         /* Return formatted value. */
-        return numeral(amount).format('$0,0.00')
+        return formatNumber(amount, '$0,0.00')
     } else {
         /* Return formatted value. */
-        return numeral(amount).format('$0,0.00[0000]')
+        return formatNumber(amount, '$0,0.00[0000]')
     }
 }
 

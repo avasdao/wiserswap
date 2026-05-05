@@ -1,7 +1,9 @@
+<!-- pages/tokens.vue -->
+
 <script setup lang="ts">
 /* Import modules. */
-import moment from 'moment'
-import numeral from 'numeral'
+import dayjs from 'dayjs'
+const { formatNumber } = useFormats()
 
 useHead({
     title: `Tokens — WiserSwap`,
@@ -71,7 +73,7 @@ const displayGenesis = (_token) => {
     ) {
         return 'n/a'
     } else {
-        genesis = moment.unix(_token.genesis.blocktime).format('lll')
+        genesis = dayjs.unix(_token.genesis.blocktime).format('lll')
 
         return genesis
     }

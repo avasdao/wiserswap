@@ -1,7 +1,6 @@
-<script setup lang="ts">
-/* Import modules. */
-import numeral from 'numeral'
+<!-- pages/borrow.vue -->
 
+<script setup lang="ts">
 useHead({
     title: `Borrow — WiserSwap`,
     meta: [

@@ -1,12 +1,18 @@
+<!-- components/Wallet/History.vue -->
+
 <script setup>
 /* Import modules. */
-import moment from 'moment'
-import numeral from 'numeral'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+const { formatNumber } = useFormats()
 import { getSender } from '@nexajs/address'
 import {
     getAddressHistory,
     getTransaction,
 } from '@nexajs/provider'
+
+/* Extend dayjs with relativeTime plugin. */
+dayjs.extend(relativeTime)
 
 /* Initialize stores. */
 import { useWalletStore } from '@/stores/wallet'
@@ -107,13 +113,12 @@ const displayOutputs = (_outputs) => {
 }
 
 const displayTime = (_time) => {
-    return moment.unix(_time).format('lll')
+    return dayjs.unix(_time).format('lll')
 }
 
 const displayTimeAgo = (_time) => {
-    return moment.unix(_time).fromNow()
+    return dayjs.unix(_time).fromNow()
 }
-
 
 onMounted(() => {
     init()

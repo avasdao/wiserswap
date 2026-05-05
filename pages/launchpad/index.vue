@@ -1,7 +1,9 @@
+<!-- pages/launchpad/index.vue -->
+
 <script setup>
 /* Import modules. */
-import moment from 'moment'
-import numeral from 'numeral'
+import dayjs from 'dayjs'
+const { formatNumber } = useFormats()
 
 /* Import components. */
 import Calendar from './Calendar.vue'
@@ -34,7 +36,7 @@ let title = ref(null)
 let nexUsd = ref(null)
 
 const displayStarting = computed(() => {
-    return moment().format('LLLL')
+    return dayjs().format('LLLL')
 })
 
 const displayFundingGoal = computed(() => {
@@ -67,7 +69,7 @@ const displayExpiration = computed(() => {
         : DEFAULT_CAMPAIGN_DURATION
 
     /* Return (formatted) display. */
-    return moment().add(_duration, 'days').format('LLLL')
+    return dayjs().add(_duration, 'days').format('LLLL')
 })
 
 const setNEXA = () => {
@@ -235,14 +237,14 @@ currency.value = 'NEXA'
 
 /* Set starting. */
 // FOR DEV PURPOSE ONLY
-starting.value = moment().unix()
+starting.value = dayjs().unix()
 
 /* Initialize duration. */
 duration.value = DEFAULT_CAMPAIGN_DURATION
 
 /* Set expiration. */
 // FOR DEV PURPOSE ONLY
-expiration.value = moment().add(duration.value, 'days').unix()
+expiration.value = dayjs().add(duration.value, 'days').unix()
 
 const _tickerData = await $fetch('https://wiserswap.com/v1/ticker/NEXA')
     .catch(err => console.error(err))

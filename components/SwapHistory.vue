@@ -1,12 +1,18 @@
+<!-- components/SwapHistory.vue -->
+
 <script setup lang="ts">
 /* Import modules. */
-import moment from 'moment'
-import numeral from 'numeral'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+const { formatNumber } = useFormats()
 
 import {
     getAddressTokenHistory,
     getTransaction,
 } from '@nexajs/provider'
+
+/* Extend dayjs with relativeTime plugin. */
+dayjs.extend(relativeTime)
 
 /* Initialize route. */
 const route = useRoute()
@@ -31,7 +37,7 @@ const txHistory = ref(null)
 const displayAge = (_timestamp) => {
     let formatted
 
-    formatted = moment.unix(_timestamp).fromNow()
+    formatted = dayjs.unix(_timestamp).fromNow()
 
     /* Use abbreviations. */
     formatted = formatted.replaceAll('minutes', 'mins')
