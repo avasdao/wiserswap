@@ -5,7 +5,7 @@ import { defineStore } from 'pinia'
 
 const runtimeConfig = useRuntimeConfig()
 // console.log('RUNTIME CONFIG', runtimeConfig)
-const API_ENDPOINT = 'https://nexa.exchange/v1/'
+const API_ENDPOINT = 'https://wiserswap.com/v1/'
 
 /* Initialize constants. */
 const POLLING_FREQUENCY = 3000 // 3 seconds

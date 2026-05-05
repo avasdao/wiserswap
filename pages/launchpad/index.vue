@@ -244,7 +244,7 @@ duration.value = DEFAULT_CAMPAIGN_DURATION
 // FOR DEV PURPOSE ONLY
 expiration.value = moment().add(duration.value, 'days').unix()
 
-nexUsd.value = await $fetch('https://nexa.exchange/v1/ticker/price/NEXA')
+nexUsd.value = await $fetch('https://wiserswap.com/v1/ticker/price/NEXA')
     .catch(err => console.error(err))
 
 </script>
