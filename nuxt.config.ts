@@ -66,6 +66,8 @@ export default defineNuxtConfig({
     /* Internationalization Settings */
     i18n: {
         defaultLocale: 'en',
+        locales: ['en'],
+        strategy: 'no_prefix',
     },
 
     /* Route Rules */
