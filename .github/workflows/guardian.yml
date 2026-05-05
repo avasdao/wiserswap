@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  guardian:
     runs-on: ubuntu-latest
 
     steps:
