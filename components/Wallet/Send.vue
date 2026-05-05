@@ -143,7 +143,7 @@ const send = async () => {
         return alert('Enter an amount to send.')
     }
 
-    if (confirm(`Are you sure you want to send ${numeral(amount.value).format('0,0.00')} ${Wallet.asset?.ticker} to ${receiver.value}?`)) {
+    if (confirm(`Are you sure you want to send ${formatNumber(amount.value, '0,0.00')} ${Wallet.asset?.ticker} to ${receiver.value}?`)) {
         console.log(`Starting transfer of ${amount.value} ${Wallet.asset?.ticker} to ${receiver.value}...`)
 
         response = await Wallet

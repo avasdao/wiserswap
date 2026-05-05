@@ -45,13 +45,13 @@ const displayFundingGoal = computed(() => {
     let usd
 
     if (currency.value === 'NEXA') {
-        nex = fundingGoal.value ? numeral(fundingGoal.value).format('0,0[.]00') : ''
-        sats = fundingGoal.value ? numeral(fundingGoal.value * 100).format('0,0') : ''
-        usd = fundingGoal.value ? numeral(fundingGoal.value * nexUsd.value).format('$0,0.00') : ''
+        nex = fundingGoal.value ? formatNumber(fundingGoal.value, '0,0[.]00') : ''
+        sats = fundingGoal.value ? formatNumber(fundingGoal.value * 100, '0,0') : ''
+        usd = fundingGoal.value ? formatNumber(fundingGoal.value * nexUsd.value, '$0,0.00') : ''
     } else {
-        nex = fundingGoal.value ? numeral(fundingGoal.value / nexUsd.value).format('0,0[.]00') : ''
-        sats = fundingGoal.value ? numeral(fundingGoal.value / nexUsd.value * 100).format('0,0') : ''
-        usd = fundingGoal.value ? numeral(fundingGoal.value).format('$0,0.00') : ''
+        nex = fundingGoal.value ? formatNumber(fundingGoal.value / nexUsd.value, '0,0[.]00') : ''
+        sats = fundingGoal.value ? formatNumber(fundingGoal.value / nexUsd.value * 100, '0,0') : ''
+        usd = fundingGoal.value ? formatNumber(fundingGoal.value, '$0,0.00') : ''
     }
 
     return {

@@ -153,7 +153,7 @@ const init = async () => {
         /* Calculate USD value. */
         usdValue = txValue * price
         // usdValue = (tokensOut - tokensIn) * price
-        usdValue = numeral(usdValue).format('$0,0.00')
+        usdValue = formatNumber(usdValue, '$0,0.00')
 
         txHistory.value.push({
             txidem: transaction.txidem,
@@ -190,7 +190,7 @@ onMounted(() => {
 
                         <h3 class="flex flex-col truncate text-xs sm:text-sm font-medium text-gray-400">
                             <span class="-mb-1 lg:-mb-0 text-lg sm:text-xl text-semibold text-gray-600 tracking-widest">
-                                {{numeral(Math.abs(swap.quote.txValue)).format('0,0.00[00]')}}
+                                {{formatNumber(Math.abs(swap.quote.txValue), '0,0.00[00]')}}
                             </span>
 
                             {{swap.quote.symbol}}

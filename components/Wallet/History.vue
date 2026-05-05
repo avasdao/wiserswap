@@ -182,7 +182,7 @@ onMounted(() => {
 
                     <h3 v-if="input.satoshis" class="text-xs text-amber-800 truncate">
                         Satoshis:
-                        <span class="font-medium">{{numeral(Number(input.satoshis)).format('0,0')}}</span>
+                        <span class="font-medium">{{formatNumber(Number(input.satoshis), '0,0')}}</span>
                     </h3>
                     <!-- {{input}} -->
                 </div>

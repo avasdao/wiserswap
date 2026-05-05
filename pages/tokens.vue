@@ -41,21 +41,21 @@ const init = async () => {
 const displayPrice = (_token) => {
     if (_token.nextFoundation) {
         if (_token.nextFoundation['NEX']) {
-            return '$' + numeral(_token.nextFoundation['NEX']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.nextFoundation['NEX'], '0,0.00[000000]')
         }
 
         if (_token.nextFoundation['USD']) {
-            return '$' + numeral(_token.nextFoundation['USD']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.nextFoundation['USD'], '0,0.00[000000]')
         }
     }
 
     if (_token.foundation) {
         if (_token.foundation['NEX']) {
-            return '$' + numeral(_token.foundation['NEX']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.foundation['NEX'], '0,0.00[000000]')
         }
 
         if (_token.foundation['USD']) {
-            return '$' + numeral(_token.foundation['USD']).format('0,0.00[000000]')
+            return '$' + formatNumber(_token.foundation['USD'], '0,0.00[000000]')
         }
     }
 
