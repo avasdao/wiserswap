@@ -1,3 +1,5 @@
+// stores/wallet.ts
+
 /* Import modules. */
 import { defineStore } from 'pinia'
 import { mnemonicToEntropy } from '@nexajs/hdnode'

@@ -1,3 +1,5 @@
+// stores/profile.ts
+
 /* Import modules. */
 import { defineStore } from 'pinia'
 

@@ -1,3 +1,5 @@
+// stores/amm.ts
+
 /* Import modules. */
 import { defineStore } from 'pinia'
 
