@@ -160,7 +160,6 @@ describe('useFormats', () => {
             })
 
             it('formats small ratio like ticker pctChg24h / 100', () => {
-                // pctChg24h=1.68 → 1.68/100=0.0168 → 1.7%
                 expect(formatNumber(1.68 / 100.0, '0.0%')).toBe('1.7%')
             })
         })
@@ -192,6 +191,14 @@ describe('useFormats', () => {
 
             it('formats negative millions', () => {
                 expect(formatNumber(-2500000, '0,0.0a')).toBe('-2.5m')
+            })
+
+            it('formats negative billions', () => {
+                expect(formatNumber(-3000000000, '0,0.0a')).toBe('-3.0b')
+            })
+
+            it('formats negative trillions', () => {
+                expect(formatNumber(-1000000000000, '0,0.0a')).toBe('-1.0t')
             })
 
             it('formats zero', () => {
