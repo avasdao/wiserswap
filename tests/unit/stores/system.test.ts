@@ -208,7 +208,7 @@ describe('System Store', () => {
                 await store.updateTicker()
 
                 expect(mockFetch).toHaveBeenCalledWith(
-                    'https://wiserswap.com/v1/ticker/quote/57f46c1766dc0087b207acde1b3372e9f90b18c7e67242657344dcd2af660000'
+                    'https://wiserswap.com/v1/ticker/57f46c1766dc0087b207acde1b3372e9f90b18c7e67242657344dcd2af660000'
                 )
             }
         )
@@ -220,7 +220,7 @@ describe('System Store', () => {
                 await store.updateTicker()
 
                 expect(mockFetch).toHaveBeenCalledWith(
-                    'https://wiserswap.com/v1/ticker/quote/NEXA'
+                    'https://wiserswap.com/v1/ticker/NEXA'
                 )
             }
         )
